@@ -1,0 +1,29 @@
+Created a parking lot with 6 slots
+
+Allocated slot number: 1
+
+Allocated slot number: 1
+
+Allocated slot number: 1
+
+Allocated slot number: 1
+
+Allocated slot number: 1
+
+Allocated slot number: 1
+
+Slot number 4 is free
+
+Slot No.	Registration No.	Colour	1 KA-01-HH-1234 White	1 KA-01-HH-9999 White	1 KA-01-BB-0001 Black	1 KA-01-HH-7777 Red	1 KA-01-HH-2701 Blue	1 KA-01-HH-3141 Black
+
+Allocated slot number: 1
+
+Allocated slot number: 1
+
+KA-01-HH-1234, KA-01-HH-9999, KA-01-P-333, DL-12-AA-9999
+
+1, 1, 1, 1
+
+1
+
+No vehicle found with registration number number MH-04-AY-1111

@@ -1,0 +1,7 @@
+adapter: mysql2
+encoding: utf8
+database: parking_lot_development
+username: root
+password: 
+host: localhost
+port: 3306

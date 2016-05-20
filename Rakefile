@@ -1,0 +1,1 @@
+Dir.glob('lib/tasks/*.rake').each { |rake_file| load rake_file}
