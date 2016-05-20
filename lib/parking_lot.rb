@@ -38,7 +38,11 @@ class ParkingLot
 
     def exit_program
       Parking.unset_current_parking
-      'We hope you liked the program, Thanks! Bye Bye'
+      print_thankyou_message      
+    end
+
+    def print_thankyou_message
+      STDOUT.puts 'We hope you liked the program, Thanks! Bye Bye'
     end
 
     def detect_file_input(argument)
