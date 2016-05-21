@@ -21,14 +21,9 @@ bundle install
 
 * Create database.yml in config directory. database_example.yml has been added for reference. username and pasword for mysql server needs to be added.
 
-* Create Database -
+* Create Database and add tables-
 ```ruby
 rake db:create
-```
-
-* Migrate Database -
-```ruby
-rake db:migrate
 ```
 
 * Valid Commands -
@@ -37,7 +32,7 @@ rake db:migrate
 ```
 
 ### About the project -
-This program accepts certain input command and does verious actions like Creating a Parking Lot, Parking the vehicle, assigning the slot. The commands can be writen in a file and pased to the rake task as a argument or the commands can be run in interactive mode shell. If file_path is passed the output is written in an output file which is located in lib/data folder else the output is printed in the shell itself.
+This program accepts certain input command and does verious actions like Creating a Parking Lot, Parking the vehicle, assigning the slot. The commands can be writen in a file and pased to the rake task as a argument or the commands can be run in interactive mode shell. If file_path is passed the output is written in an output file which is located in data folder else the output is printed in the shell itself.
 
 
 ## Solution - How to run the program ?
