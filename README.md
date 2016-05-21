@@ -4,11 +4,6 @@
 
 Run the below commands to set up the project.
 
-* Clone the repo -
-```console
-git clone git@github.com:Swati24/ParkingLot.git
-```
-
 * Copy the content and save the file with name .rvmrc in root directory -
 ```console
 rvm use 2.2.3@parking_lot --create
