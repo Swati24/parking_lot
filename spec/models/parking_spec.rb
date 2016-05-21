@@ -3,7 +3,6 @@ require_relative '../../lib/models/parking.rb'
 require_relative '../../lib/config/establish_connection.rb'
 require_relative '../../lib/models/slot.rb'
 require_relative '../../lib/models/vehicle.rb'
-require 'yaml'
 require_relative '../helper_methods.rb'
 
 describe Parking do
