@@ -1,0 +1,5 @@
+require 'active_record'
+require_relative 'config/establish_connection.rb'
+require_relative 'models/parking.rb'
+require_relative 'models/slot.rb'
+require_relative 'models/vehicle.rb'

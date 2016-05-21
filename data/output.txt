@@ -14,7 +14,7 @@ Allocated slot number: 1
 
 Slot number 4 is free
 
-Slot No.	Registration No.	Colour	1 KA-01-HH-1234 White	1 KA-01-HH-9999 White	1 KA-01-BB-0001 Black	1 KA-01-HH-7777 Red	1 KA-01-HH-2701 Blue	1 KA-01-HH-3141 Black
+Slot No.	Registration No.	Colour	1 KA-01-BB-0001 Blue	1 KA-01-HH-1234 White	1 KA-01-HH-9999 White	1 KA-01-HH-7777 Red	1 KA-01-HH-2701 Blue	1 KA-01-HH-3141 Black
 
 Allocated slot number: 1
 

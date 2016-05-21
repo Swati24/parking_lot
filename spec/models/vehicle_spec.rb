@@ -1,9 +1,4 @@
-require 'spec_helper'
-require_relative '../../lib/models/parking.rb'
-require_relative '../../lib/config/establish_connection.rb'
-require_relative '../../lib/models/slot.rb'
-require_relative '../../lib/models/vehicle.rb'
-require_relative '../helper_methods.rb'
+require_relative 'spec_dependencies.rb'
 
 describe Vehicle do
 	include HelperMethods

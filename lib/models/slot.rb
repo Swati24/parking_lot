@@ -1,9 +1,10 @@
-require 'active_record'
 class Slot < ActiveRecord::Base
 
   belongs_to :parking
 
   has_one :vehicle
+
+  scope :busy, -> { where(state: 1) }
 
   after_save :update_parking_available_slots_count
 

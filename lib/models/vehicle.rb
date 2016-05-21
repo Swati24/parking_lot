@@ -1,4 +1,3 @@
-require 'active_record'
 class Vehicle < ActiveRecord::Base
 
   belongs_to :parking
