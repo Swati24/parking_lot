@@ -1,3 +1,4 @@
+require 'active_record'
 class Vehicle < ActiveRecord::Base
 
   belongs_to :parking
@@ -30,7 +31,7 @@ class Vehicle < ActiveRecord::Base
     vehicle.slot_id = slot.id
     vehicle.parking_id = parking.id
     vehicle.save!
-
+    
     "Allocated slot number: #{vehicle.slot_number}"
   end
 

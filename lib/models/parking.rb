@@ -1,3 +1,4 @@
+require 'active_record'
 class Parking < ActiveRecord::Base
 
   VALID_COMMANDS = ['create_parking_lot', 'park', 'leave', 'status', 'registration_numbers_for_cars_with_colour', 'slot_numbers_for_cars_with_colour', 'slot_number_for_registration_number'] 
@@ -6,6 +7,7 @@ class Parking < ActiveRecord::Base
   has_many :slots
   has_many :available_slots, -> { where(state: 0) }, class_name: 'Slot'
 
+  after_save :set_current_parking
 
   def self.read_file_lines(file_path)
     File.readlines(file_path).map{ |l| l.chomp }.reject{ |l| l == '' }
@@ -125,9 +127,9 @@ class Parking < ActiveRecord::Base
   def self.leave(options)
     slot_number = options.first
     slot = current_parking.find_slot_by_number(slot_number)
+    vehicle = slot.vehicle
     if slot.present?
       slot.leave_unoccupied
-
       "Slot number #{slot.number} is free"
     else
       'No such slot is available'
@@ -287,6 +289,5 @@ class Parking < ActiveRecord::Base
   def self.unset_current_parking
     @@current_parking = nil
   end
-
 
 end

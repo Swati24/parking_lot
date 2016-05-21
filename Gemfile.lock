@@ -16,6 +16,7 @@ GEM
       tzinfo (~> 1.1)
     arel (6.0.3)
     builder (3.2.2)
+    byebug (9.0.4)
     diff-lcs (1.2.5)
     i18n (0.7.0)
     json (1.8.3)
@@ -44,9 +45,10 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord (= 4.2.6)
+  byebug
   mysql2
   rake
   rspec
 
 BUNDLED WITH
-   1.11.2
+   1.12.4

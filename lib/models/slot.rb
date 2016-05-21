@@ -1,3 +1,4 @@
+require 'active_record'
 class Slot < ActiveRecord::Base
 
   belongs_to :parking
@@ -38,7 +39,12 @@ class Slot < ActiveRecord::Base
   #  true/false
   #
   def leave_unoccupied
-    mark_free(-1)
+    vehicle = self.vehicle
+    if mark_free(-1)
+      if vehicle.present?
+        vehicle.update_attributes!(slot_id: nil)
+      end
+    end
   end
 
   # - This method sets the state of slot to the value passed in arguments.
@@ -51,10 +57,6 @@ class Slot < ActiveRecord::Base
   #  true/false
   #
   def mark_free(state = 0)
-    if self.already_used?
-      vehicle.slot_id = nil
-      vehicle.save!
-    end
     self.state = state
     self.save
   end
