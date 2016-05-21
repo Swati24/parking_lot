@@ -35,8 +35,8 @@ class Parking < ActiveRecord::Base
     return true
   end
 
-  # - This method processed the input command. It splits the actual command and arguments. CHecks if the command is valid and invokes
-  # the corresponding action to the command.
+  # - This method processed the input command. It splits the actual command and arguments. 
+  # CHecks if the command is valid and invokes the corresponding action to the command.
   #
   # == Parameters:
   # Mandatory::
@@ -70,8 +70,8 @@ class Parking < ActiveRecord::Base
     file_out.close
   end
 
-  # - This method creates a new parking lot with the given number of slots. It also sets the global variable
-  # current_parking to the parking created.
+  # - This method creates a new parking lot with the given number of slots. 
+  # It also sets the global variable current_parking to the parking created.
   #
   # == Parameters:
   # Mandatory::
