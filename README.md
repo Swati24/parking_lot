@@ -26,6 +26,16 @@ bundle install
 rake db:create
 ```
 
+* To run all tests-
+```ruby
+rspec
+```
+
+* To run parking_spec.rb tests-
+```ruby
+rspec spec/models/parking_spec.rb
+```
+
 * Valid Commands -
 ```ruby
 ['create_parking_lot', 'park', 'leave', 'status', 'registration_numbers_for_cars_with_colour', 'slot_numbers_for_cars_with_colour', 'slot_number_for_registration_number'] 
@@ -39,3 +49,4 @@ This program accepts certain input command and does verious actions like Creatin
 	
 	Interactive Mode Command :  rake parking_lot
 	File Mode Command : ruby lib/parking_lot.rb "data/input.txt > data/output.txt"
+
