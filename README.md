@@ -47,6 +47,6 @@ This program accepts certain input command and does verious actions like Creatin
 
 ## Solution - How to run the program ?
 	
-	Interactive Mode Command :  rake parking_lot
+	Interactive Mode Command :  ruby lib/parking_lot.rb
 	File Mode Command : ruby lib/parking_lot.rb "data/input.txt > data/output.txt"
 

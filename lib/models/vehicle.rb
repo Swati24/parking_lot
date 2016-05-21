@@ -9,8 +9,6 @@ class Vehicle < ActiveRecord::Base
 
   validates_uniqueness_of :registration_number
 
-  after_create :book_slot
-
   # - This method finds or creates a vehicle for the parking.
   #
   # == Parameters:
@@ -26,12 +24,14 @@ class Vehicle < ActiveRecord::Base
     if vehicle.nil?
       vehicle = new(options)
     end
-    
+  
     vehicle.slot_id = slot.id
     vehicle.parking_id = parking.id
-    vehicle.save!
-    
+    if vehicle.save
+      vehicle.book_slot
+    end
     "Allocated slot number: #{vehicle.slot_number}"
+
   end
 
   # - This method books the slot for the vehicle. i.e. sets the state of the vehicle.

@@ -106,7 +106,7 @@ class Parking < ActiveRecord::Base
     first_available_slot = current_parking.first_available_slot
     message = 
       if first_available_slot.present?
-        Vehicle.create_for_parking(current_parking, first_available_slot, options)
+      Vehicle.create_for_parking(current_parking, first_available_slot, options)
       else
         'Sorry, parking lot is full'
       end
