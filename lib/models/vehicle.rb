@@ -14,7 +14,7 @@ class Vehicle < ActiveRecord::Base
   # == Parameters:
   # Mandatory::
   #  parking object
-  # options => { registration_number: 'KA-01-HH-9999' , colour: White, slot_id: <slot object> } 
+  # options => { registration_number: 'KA-01-HH-9999' , colour: White, slot_id: <slot object> }
   #
   #  == Returns:
   #  Allocated slot number: 1
@@ -24,14 +24,14 @@ class Vehicle < ActiveRecord::Base
     if vehicle.nil?
       vehicle = new(options)
     end
-  
+
     vehicle.slot_id = slot.id
     vehicle.parking_id = parking.id
     if vehicle.save
       vehicle.book_slot
     end
     "Allocated slot number: #{vehicle.slot_number}"
-
+    "Allocated slot number: #{vehicle.slot_number}"
   end
 
   # - This method books the slot for the vehicle. i.e. sets the state of the vehicle.
@@ -45,6 +45,7 @@ class Vehicle < ActiveRecord::Base
   end
 
   # - This method returns the slot number corresponding to the slot
+  # - This method returns the slot number corresponding to the slot
   #
   #  == Returns:
   #  1
@@ -57,6 +58,7 @@ class Vehicle < ActiveRecord::Base
     end
   end
 
+  # - This method returns the vehicle's parking information in a string
   # - This method returns the vehicle's parking information in a string
   #
   #  == Returns:

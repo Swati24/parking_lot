@@ -1,6 +1,7 @@
 class Slot < ActiveRecord::Base
 
   belongs_to :parking
+  belongs_to :parking
 
   has_one :vehicle
 
@@ -18,6 +19,7 @@ class Slot < ActiveRecord::Base
     if state_changed?
       if state != 0
         parking.decrement :available_slots_count
+        parking.decrement :available_slots_count
       else
         parking.increment :available_slots_count
       end
@@ -25,6 +27,7 @@ class Slot < ActiveRecord::Base
     end
   end
 
+  # - This method checks if the slot is already being used by vehicle.
   # - This method checks if the slot is already being used by vehicle.
   #
   #  == Returns:
