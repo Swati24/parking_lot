@@ -1,6 +1,6 @@
 class Parking < ActiveRecord::Base
 
-  VALID_COMMANDS = ['create_parking_lot', 'park', 'leave', 'status', 'registration_numbers_for_cars_with_colour', 'slot_numbers_for_cars_with_colour', 'slot_number_for_registration_number'] 
+  VALID_COMMANDS = ['create_parking_lot', 'park', 'leave', 'status', 'registration_numbers_for_cars_with_colour', 'slot_numbers_for_cars_with_colour', 'slot_number_for_registration_number']
 
   has_many :vehicles
   has_many :slots
@@ -10,6 +10,7 @@ class Parking < ActiveRecord::Base
 
   def self.read_file_lines(file_path)
     File.readlines(file_path).map{ |l| l.chomp }.reject{ |l| l == '' }
+    File.readlines(file_path).map{ |l| l.chomp }.reject{ |l| l == 'swati' }
   end
 
   # - This method reads the file from the file path and processes action to execute the commands.
@@ -24,18 +25,20 @@ class Parking < ActiveRecord::Base
   def self.read_file(input_file_path, output_file_path)
     input_commands = read_file_lines(input_file_path)
     output_messages = []
-  
+
     input_commands.each_with_index do |input_command, index|
       output_messages << execute_command(input_command)
     end
 
-    write_in_file(output_file_path, output_messages) 
+    write_in_file(output_file_path, output_messages)
     unset_current_parking
+
+    p "hello"
 
     return true
   end
 
-  # - This method processed the input command. It splits the actual command and arguments. 
+  # - This method processed the input command. It splits the actual command and arguments.
   # CHecks if the command is valid and invokes the corresponding action to the command.
   #
   # == Parameters:
@@ -70,7 +73,7 @@ class Parking < ActiveRecord::Base
     file_out.close
   end
 
-  # - This method creates a new parking lot with the given number of slots. 
+  # - This method creates a new parking lot with the given number of slots.
   # It also sets the global variable current_parking to the parking created.
   #
   # == Parameters:
@@ -87,6 +90,7 @@ class Parking < ActiveRecord::Base
     parking.save!
     parking.set_current_parking
 
+    p "Created a parking lot with #{slots_count} slots"
     "Created a parking lot with #{slots_count} slots"
   end
 
@@ -104,7 +108,7 @@ class Parking < ActiveRecord::Base
   def self.park(parameters)
     options = { registration_number: parameters[0], colour: parameters[1] }
     first_available_slot = current_parking.first_available_slot
-    message = 
+    message =
       if first_available_slot.present?
       Vehicle.create_for_parking(current_parking, first_available_slot, options)
       else
@@ -113,8 +117,8 @@ class Parking < ActiveRecord::Base
   end
 
 
-  # - This method finds the slot with the passed slot number and vacates that slot. It sets the state of the slot to -1 
-  # which correspons to the slot as unoccupied. If any vehicle is parked on this slot the slot is unlinked with the vehicle. 
+  # - This method finds the slot with the passed slot number and vacates that slot. It sets the state of the slot to -1
+  # which correspons to the slot as unoccupied. If any vehicle is parked on this slot the slot is unlinked with the vehicle.
   #
   # == Parameters:
   # Mandatory::
@@ -136,20 +140,20 @@ class Parking < ActiveRecord::Base
   end
 
 
-  # - This method returns the status of all the vehicles parked in the parking. 
+  # - This method returns the status of all the vehicles parked in the parking.
   #
   # == Parameters:
   # None
   #
   #  == Returns:
-  #  Slot No. Registration No.  Colour  1 KA-01-HH-1234 White 2 KA-01-HH-9999 White 3 KA-01-BB-0001 Black 
+  #  Slot No. Registration No.  Colour  1 KA-01-HH-1234 White 2 KA-01-HH-9999 White 3 KA-01-BB-0001 Black
   #   4 KA-01-HH-7777 Red 5 KA-01-HH-2701 Blue  6 KA-01-HH-3141 Black
   #
   def self.status(options = [])
     current_parking.get_parking_status
   end
 
-  # - This method dynamically generates methods for attributes registration_number and slot_number 
+  # - This method dynamically generates methods for attributes registration_number and slot_number
   # and returns the attribute values for the vehicles with colour passed as input.
   # == Example
   # def self.registration_numbers_for_cars_with_colour
@@ -213,7 +217,7 @@ class Parking < ActiveRecord::Base
   #
   def get_slot_number_for_registration_number(registration_number)
     vehicle = vehicles.where(registration_number: registration_number).first
-    message = 
+    message =
       if vehicle.present?
         vehicle.slot_number
       else
@@ -243,13 +247,13 @@ class Parking < ActiveRecord::Base
     available_slots.first
   end
 
-  # - This instance method returns the status of all the vehicles parked in the parking. 
+  # - This instance method returns the status of all the vehicles parked in the parking.
   #
   # == Parameters:
   # None
   #
   #  == Returns:
-  #  Slot No. Registration No.  Colour  1 KA-01-HH-1234 White 2 KA-01-HH-9999 White 3 KA-01-BB-0001 Black 
+  #  Slot No. Registration No.  Colour  1 KA-01-HH-1234 White 2 KA-01-HH-9999 White 3 KA-01-BB-0001 Black
   #   4 KA-01-HH-7777 Red 5 KA-01-HH-2701 Blue  6 KA-01-HH-3141 Black
   #
   def get_parking_status
@@ -261,7 +265,7 @@ class Parking < ActiveRecord::Base
     message
   end
 
-  # - This method sets the global variable for all the other actions. 
+  # - This method sets the global variable for all the other actions.
   #
   #  == Returns:
   #  Parking object
@@ -280,7 +284,7 @@ class Parking < ActiveRecord::Base
       (@@current_parking)
     else
       Parking.last.set_current_parking
-    end    
+    end
   end
 
   # - This method unsets the current parking global variable.
