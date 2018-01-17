@@ -1,7 +1,7 @@
 require_relative 'dependencies'
 
 class ParkingLot
-  
+
   class << self
     attr_accessor :input_file_path, :output_file_path
 
@@ -11,10 +11,11 @@ class ParkingLot
 
     def message_for_command_prompt
       p '============================='
+      p '============================='
     end
 
     def process_input_and_display_result input
-      output = 
+      output =
         if input != 'exit'
           execute_command(input)
         else
@@ -33,18 +34,19 @@ class ParkingLot
 
     def exit_program
       Parking.unset_current_parking
-      print_thankyou_message      
+      print_thankyou_message
     end
 
     def print_thankyou_message
       STDOUT.puts 'We hope you liked the program, Thanks! Bye Bye'
+      STDOUT.puts 'We hope you liked the program, Thanks! Bye Bye - Repeat'
     end
 
     def detect_file_input(argument)
       return false unless argument.present?
       @input_file_path, @output_file_path = argument.split('>').collect(&:strip)
       return false unless File.exists?(input_file_path) or File.exists?(output_file_path)
-    
+
       true
     end
 
@@ -57,7 +59,7 @@ class ParkingLot
     def initiate_interactive_mode
       begin
         message_for_command_prompt
-        input = STDIN.gets.strip 
+        input = STDIN.gets.strip
         process_input_and_display_result(input)
       end until exit_loop?(input)
     end

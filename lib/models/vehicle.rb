@@ -14,7 +14,7 @@ class Vehicle < ActiveRecord::Base
   # == Parameters:
   # Mandatory::
   #  parking object
-  # options => { registration_number: 'KA-01-HH-9999' , colour: White, slot_id: <slot object> } 
+  # options => { registration_number: 'KA-01-HH-9999' , colour: White, slot_id: <slot object> }
   #
   #  == Returns:
   #  Allocated slot number: 1
@@ -24,7 +24,7 @@ class Vehicle < ActiveRecord::Base
     if vehicle.nil?
       vehicle = new(options)
     end
-  
+
     vehicle.slot_id = slot.id
     vehicle.parking_id = parking.id
     if vehicle.save
@@ -57,6 +57,8 @@ class Vehicle < ActiveRecord::Base
     end
   end
 
+  # - This method returns the vehicle's parking information in a string
+  # - This method returns the vehicle's parking information in a string
   # - This method returns the vehicle's parking information in a string
   #
   #  == Returns:
