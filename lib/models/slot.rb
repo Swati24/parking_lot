@@ -8,8 +8,8 @@ class Slot < ActiveRecord::Base
 
   after_save :update_parking_available_slots_count
 
-  # - This method is invoked when a slot is unassigned assigned to a vehicle. It increments or decrements the 
-  # counter of update_parking_available_slots_count in parking object respectively. 
+  # - This method is invoked when a slot is unassigned assigned to a vehicle. It increments or decrements the
+  # counter of update_parking_available_slots_count in parking object respectively.
   #
   #  == Returns:
   #  true/false
@@ -31,6 +31,7 @@ class Slot < ActiveRecord::Base
   #  true/false
   #
   def already_used?
+    p "Checking already used"
     vehicle.present? and state == 1
   end
 
@@ -52,7 +53,7 @@ class Slot < ActiveRecord::Base
   #
   # == Parameters:
   # Mandatory::
-  #  state 
+  #  state
   #
   #  == Returns:
   #  true/false
